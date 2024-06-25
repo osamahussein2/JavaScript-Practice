@@ -96,6 +96,56 @@ if (typeof me == "number")
     }
 }
 
+// The Number class function (constructor) converts the value to an equivalent of a number
+console.log(Number(10));
+
+// Or, a string with a number works too
+console.log(Number("16"));
+
+// Although if I use the Number function and don't pass in a number as an argument, I'll get a NaN error (not a number)
+console.log(Number("Special"));
+
+// I just found out that Javascript is perfectly fine with using + operator to format a string while using console.log
+
+// If I pass in a null inside the number function, Javascript console will output a number of 0
+console.log("Null Number: " + Number(null));
+
+// If I pass in a false boolean inside the number function, Javascript console will output a number of 0
+console.log("False Boolean Number: " + Number(false));
+
+// If I pass in a true boolean inside the number function, Javascript console will output a number of 1
+console.log("True Boolean Number: " + Number(true));
+
+// This will output with the number object, along with the number I passed in inside the argument
+let myNumberObject = new Number(200);
+console.log(myNumberObject);
+
+// I can add my number variable with any number
+let meThinkOfANumber = 3;
+console.log(meThinkOfANumber + 13);
+
+// Basically, the == operator checks if my variable is equal to whatever value I state
+// For some reason, my statement string below doesn't print to the console (it's either a bug or I'm doing the code wrong)
+// I fixed the statement not showing up in console bug by using the String function (I don't know I figured that out)
+// Or I can use the open parentheses and pass in my boolean opeartor (that also fixes the bug as well)
+console.log("Is this number equal to 12? " + (meThinkOfANumber == 12));
+
+// Javascript can also work with floating point values too
+console.log("0.3 + 0.75 = " + (0.3 + 0.75));
+
+// If I divide any number by 0, I'll get an Infinity reference in the console meaning that the number could be anything to the machine
+// Maybe the numbers will loop through forever and the program doesn't understand what number to output for you
+console.log(20 / 0);
+
+// Using the Infinity enum will output Infinity to the console, but if say "infinity" instead, I'll get an error
+console.log(Infinity);
+
+// Javascript tries to infer data type from a value and context, a string literal containing a number will be understood
+console.log("3" * 5);
+
+// Javascript will not understand a number that is typed in words, so a NaN error will be thrown to the console instead
+console.log("Three" * 5);
+
 // Found out about the set timeout function at: https://stackoverflow.com/questions/18503001/node-js-console-gets-closed-immediately-after-i-execute-the-program-from-visual
 setTimeout(function () {
     process.exit();
