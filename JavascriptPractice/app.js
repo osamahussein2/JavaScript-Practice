@@ -146,6 +146,62 @@ console.log("3" * 5);
 // Javascript will not understand a number that is typed in words, so a NaN error will be thrown to the console instead
 console.log("Three" * 5);
 
+// Javascript can understand strings with single quotations marks and prints them to the console the same way as double quotation marks
+console.log('GO!!!');
+
+// Javascript can write quotation marks to the console if the marks are enclosed inside the whole quote first
+console.log('"Hey there!", said Osama Hussein');
+
+// This below will return an uncaught syntaxerror because of the extra apostrophe in I'm and it doesn't have a closed '
+//console.log('"I'm a string," said Osama Hussein');
+
+// The \ fixes this bug that occurs above
+console.log('"I\'m a string, " said Osama Hussein');
+
+let osamaString = String(6);
+console.log(osamaString);
+
+// Finds what type of variable is being returned in the variable I defined above
+console.log(typeof osamaString);
+
+let stringObject = new String("My string!");
+console.log(stringObject);
+
+console.log(typeof stringObject);
+
+// Using double quotes while using line breaks returns an invalid or unexpected syntax token
+/*const stringError = "This
+is a string.";*/
+
+// Using single quotes with line breaks won't work either
+/*const stringWorks = 'This
+is a string.';
+
+console.log(stringWorks) */
+
+// Seperated strings can be printed to the console using the + operator
+// Javascript + operator acts as a concatenation operator, which combines seperated strings into one string
+console.log("The plus" + "/minus signs mean nothing if you're not a real programmer!" + " Just kidding!");
+
+// Placeholder final string with 2 + 2
+console.log("What's 2+2? " + (2 + 2) + ".");
+
+// ${} are interpolated by default, meaning that the result of the expression replaces the placeholder in the final string
+console.log(`What's 2+2? ${ 2 + 2 }.`);
+
+const winningAttitude = "Osama Hussein and I am looking to win at life and programming now!"
+
+// The first argument of this function below contains an array of string values and the second argument defines the placeholder
+function referenceWinningAttitude(strings, placeHolder) {
+    const what = strings[0];
+    console.log(`${ what }the real ${ placeHolder }.`);
+}
+
+// Each placeholder is passed to the function above as a standalone value with an associated placeholder I set
+referenceWinningAttitude`I am ${winningAttitude}.`;
+
+
+
 // Found out about the set timeout function at: https://stackoverflow.com/questions/18503001/node-js-console-gets-closed-immediately-after-i-execute-the-program-from-visual
 setTimeout(function () {
     process.exit();
