@@ -200,7 +200,31 @@ function referenceWinningAttitude(strings, placeHolder) {
 // Each placeholder is passed to the function above as a standalone value with an associated placeholder I set
 referenceWinningAttitude`I am ${winningAttitude}.`;
 
+// All values in Javascript are implicitly true or false
+// The Boolean object is used to coerce a value to be true or false, based on the implicit state of that value
+console.log(Boolean("Let's go!!"));
 
+// Boolean values that return false include 0, null, NaN, undefined, an empty string (""), omitted value and false
+console.log(Boolean(NaN));
+console.log(Boolean(-0));
+
+// The boolean below will return true because the number isn't equal to 0
+console.log(Boolean(6));
+
+// Even if I input the string to say "false", the boolean will return true simply because it's a declared string 
+console.log(Boolean("false"));
+
+// Avoid using the boolean object as a constructor, since it creates an object that returns a boolean value, not a bool primitive
+const falseBool = Boolean(0);
+const falseObject = new Boolean(0);
+
+console.log(falseBool);
+console.log(falseObject);
+
+console.log(falseObject.valueOf());
+
+console.log(falseBool == true);
+console.log(falseObject == true);
 
 // Found out about the set timeout function at: https://stackoverflow.com/questions/18503001/node-js-console-gets-closed-immediately-after-i-execute-the-program-from-visual
 setTimeout(function () {
