@@ -226,6 +226,38 @@ console.log(falseObject.valueOf());
 console.log(falseBool == true);
 console.log(falseObject == true);
 
+// The null keyword is used to intentionally state that a value that is defined is absent
+
+// Gets the object type of null, it'll equal to an object because it's a keyword
+console.log(typeof null);
+
+// Undefined is a primitive value assigned to variables that just got declared or
+// to the resulting value of an operation doesn't return a meaningful value
+
+// This function below will return undefined because I'm not returning and declaring anything here
+// I'm just stating the function's name
+function what() { }
+
+console.log(what());
+
+// This function below will also return undefined because I'm not even returning a value here
+// I only say return and Javascript doesn't understand what I'm trying to return inside the function
+function returnWhat() {
+    return;
+};
+
+console.log(returnWhat());
+
+// Null represents a blank value (doesn't know what the value equals to)
+// Whereas undefined represents a lack of assigned value
+
+// Null and undefined are loosely equal but not strictly equal (hence why == will return true)
+// The loose equality operator coerces operands of different types of boolean values, making null and undefined both false
+console.log(null == undefined);
+
+// The strict equality operator considers operands of different data types to be unequal
+console.log(null === undefined);
+
 // Found out about the set timeout function at: https://stackoverflow.com/questions/18503001/node-js-console-gets-closed-immediately-after-i-execute-the-program-from-visual
 setTimeout(function () {
     process.exit();
