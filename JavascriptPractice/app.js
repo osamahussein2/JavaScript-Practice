@@ -258,6 +258,28 @@ console.log(null == undefined);
 // The strict equality operator considers operands of different data types to be unequal
 console.log(null === undefined);
 
+// BigInt is a new primitive that allows any math operation to exceed outside of the range of the Number object
+// Create a BigInt variable by passing in the n keyword after the big number
+
+const myNum = 9999999999999999;
+const myBigNum = 9999999999999999n;
+
+console.log(typeof myNum);
+console.log(typeof myBigNum);
+
+console.log(myNum);
+console.log(myBigNum);
+
+/* This below will return an error because Javascript won't be able to convert a BigInt variable with an 
+actual number on an arthmetic operation */
+
+//console.log(myBigNum + 2);
+
+// To be able to perform arthmetic operations using BigInts, define both operands as BigInt values
+
+console.log(myNum + 10); // This will return a value that is off by 1
+console.log(myBigNum + 10n);
+
 // Found out about the set timeout function at: https://stackoverflow.com/questions/18503001/node-js-console-gets-closed-immediately-after-i-execute-the-program-from-visual
 setTimeout(function () {
     process.exit();
