@@ -280,6 +280,100 @@ actual number on an arthmetic operation */
 console.log(myNum + 10); // This will return a value that is off by 1
 console.log(myBigNum + 10n);
 
+// Variables are data structures in programming that assigns some kind of name to a value (e.g. int, string, etc.)
+
+// This below will return an error because variables can't start with digits
+
+//let 2re = true;
+
+// This below will also return an error because variable indentifiers can't be all numbers
+// Causes a conflict with the program interpreting the number as either a number or an identifier
+
+//let 8 = 16;
+
+// This works because the variable interprets the word below as an indentifier 
+let osamaBeingABetterProgrammer = true;
+
+// In Javascript, variables can be declared using let, const (for making a variable impossible to modify) and var
+
+// Use a single = sign when declaring a variable to assign/reassign a value to it
+let myVariable = 4;
+
+console.log(myVariable);
+console.log(myVariable + myVariable + myVariable); // Can also add the same declared variables together
+
+// A variable can be declared without assigning a value to it right away
+
+let osamaVariableBeDefined;
+
+// This below will return an undefined keyword because I didn't initialize any value inside my variable above
+console.log(osamaVariableBeDefined);
+
+// Return my value of 23 and it will print the value to the console below
+osamaVariableBeDefined = 23;
+
+console.log(osamaVariableBeDefined);
+
+// This below will return an error because I never declared the variable at all by using let, const or var
+
+//myVariableNotDeclared;
+
+// Variables can be associated together to create a "binding" but only followed by a let, const or var keyword
+
+let me1, me2, me3, me4;
+
+// Or let me1; let me2; let me3; let me4;
+
+// Javascript allows you to reassign a value without the let or var keyword as long as it knows the variable's name
+// Javascript also allows reassigning variables new values based on their existing value
+
+console.log(osamaVariableBeDefined = osamaVariableBeDefined - osamaVariableBeDefined);
+
+// A variable name can't be redeclared more than once because the program will throw a redeclaration of let error
+
+//let meVar = true;
+//let meVar = false;
+
+// But Javascript is fine with redeclaration of variables using the var keyword
+
+var meVar = true;
+var meVar = false;
+
+console.log(meVar);
+
+// Use the const keyword to declare a constant, initialize the value right away and then can't be modified
+
+const itsAllTrue = true;
+
+console.log(itsAllTrue);
+
+// An undeclared constant variable will throw an error because it can't be reassigned afterwards
+
+// Returns SyntaxError: Missing initializer in const declaration below
+//const suffer;
+
+// Changing the value of a constant variable will throw a type error
+//const suffered = false;
+
+// Returns Uncaught TypeError TypeError: Assignment to constant variable error
+//suffered = true;
+
+// However, when a constant is associated with an object, the properties of the object can be modified
+
+const constantObject = { "Osama1": true };
+
+//console.log(constantObject);
+
+constantObject.Osama2 = false;
+
+console.log(constantObject);
+
+// A constant that contains an object is an immutable reference to a mutable data value
+
+//constantObject = false;
+
+// When you don't expect a variable to be reassigned, make the variable a constant (not to change the value)
+
 // Found out about the set timeout function at: https://stackoverflow.com/questions/18503001/node-js-console-gets-closed-immediately-after-i-execute-the-program-from-visual
 setTimeout(function () {
     process.exit();
