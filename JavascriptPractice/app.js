@@ -374,6 +374,67 @@ console.log(constantObject);
 
 // When you don't expect a variable to be reassigned, make the variable a constant (not to change the value)
 
+// A variable that is declared inside the block statement will work (but not outside of the block statement)
+{
+    let osamaBlock = true;
+    console.log(osamaBlock);
+}
+
+// This below will return an error because it doesn't know where this variable below is declared
+//osamaBlock
+
+{
+    const myConstant = false;
+}
+
+// Declaring the same variable outside of the block will work the same way as declaring it inside the block statement
+const myConstant = true;
+console.log(myConstant);
+
+// A declared variable can't be extended to its parent block but it's available to its descendant blocks
+
+{
+    let osamaBlock2 = true;
+    {
+        console.log("osamaBlock2 = " + osamaBlock2);
+    }
+}
+
+// The value of a declared variable can be changed inside the descendant blocks
+{
+    let thisThing = false;
+    {
+        thisThing = true;
+    }
+    console.log("thisThing = " + thisThing);
+}
+
+// An indentifier will the same variable name inside the descendant block won't throw an error
+{
+    let scopeMe = false;
+    {
+        // This won't throw an error, but looks like the program won't try to read this value (inside this block)
+        let scopeMe = true;
+    }
+
+    console.log(scopeMe);
+}
+
+// Variables declared using var are scoped to their closest containing function (or a static intialization block)
+function functionScope() {
+    var scopedFunction = true;
+
+    return scopedFunction;
+}
+
+// Returns an error below because this is undefined (even if it's a returned variable inside a function)
+//scopedFunction;
+
+// The console can print to the console the function that has a return value
+console.log(functionScope());
+
+
+
 // Found out about the set timeout function at: https://stackoverflow.com/questions/18503001/node-js-console-gets-closed-immediately-after-i-execute-the-program-from-visual
 setTimeout(function () {
     process.exit();
