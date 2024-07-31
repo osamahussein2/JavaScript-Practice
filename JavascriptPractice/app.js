@@ -433,7 +433,47 @@ function functionScope() {
 // The console can print to the console the function that has a return value
 console.log(functionScope());
 
+// Global variable below
+var functionGlobal = true;
+let blockGlobal = true;
 
+{
+    // Print the global variables inside this parent block here
+    console.log("functionGlobal = " + functionGlobal);
+    console.log("blockGlobal = " + blockGlobal);
+}
+
+// Parent function here
+(function () {
+    // Print the global variables inside this parent function here
+    console.log("functionGlobal = " + functionGlobal);
+    console.log("blockGlobal = " + blockGlobal);
+}());
+
+function declareMyVariableHere() {
+
+    // Assigning a value to a variable without explicitly declaring it using let, var or const to create
+    // Makes the variable a global scope, even if it's initialized inside a function or a block
+    // A variable of this type is sometimes called an implied global (since it only applies to a function/block)
+
+    globalVariable = "global variable!";
+
+    return globalVariable;
+}
+
+console.log(declareMyVariableHere());
+
+// Variable and function declarations are hoisted to the top of their scope, meaning that Javascript interpreter
+// processes any variable declared at any point in a script and moves it to the first line of the enclosing scope
+// before executing the script.
+// Basically, a variable can be declared using var reference without having to declare it without running into an error.
+var hoistedVariable;
+
+// The variable above is a hosted variable not an initialization makes the variable that never got declared with var,
+// let, or const aren't hoisted
+
+unhoistedVariable = true;
+console.log("unhoistedVariable = " + unhoistedVariable);
 
 // Found out about the set timeout function at: https://stackoverflow.com/questions/18503001/node-js-console-gets-closed-immediately-after-i-execute-the-program-from-visual
 setTimeout(function () {
