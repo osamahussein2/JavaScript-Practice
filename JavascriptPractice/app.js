@@ -569,6 +569,130 @@ console.log("thisAssignmentLogic2 ||= 5 + 4: " + (thisAssignmentLogic2 ||= 5 + 4
 thisAssignmentLogic2 = true;
 console.log("thisAssignmentLogic2 ||= 5 + 4: " + (thisAssignmentLogic2 ||= 5 + 4));
 
+// An if statement evaluates a condition inside the matched parentheses that follow
+// If the condition evaluates to be true, the statement or block statement that follows the matched parentheses is executed
+if (true) console.log("True.");
+
+if (true) {
+    const thisString = "This string is true."
+    console.log(thisString);
+}
+
+// If the condition inside the parentheses evaluates to be false, the statement that follows it will be ignored
+if (false) console.log("True.");
+
+/* An else keyword immediately following an if statement and its conditionally-executed statement specifies the statement
+to be executed if the if condition evaluates to false */
+if (false) console.log("True.");
+else console.log("False.");
+
+/* To chain multiple if statements together, you can make the conditionally-executed statement following else another
+if statement like so */
+const osamaCondition = 16;
+
+if (osamaCondition === 20) console.log("Hi there, Osama's condition is equal to 20!");
+else if (osamaCondition === 16) console.log("Hi there, Osama's condition is equal to 16!");
+
+// Using block statement syntax following conditionals helps improve readability of the code
+if (osamaCondition === 36) {
+    console.log("Hi there, Osama's condition is equal to 36!");
+} else if (osamaCondition === 18) {
+    console.log("Hi there, Osama's condition is equal to 18!");
+} else {
+    console.log("Hi there, Osama's condition is not equal to 36 or 18!");
+}
+
+// The ternary operator is shorthand used to conditionally execute an expression
+
+/* The ternary operator is the only Javascript operator that uses 3 operands: 
+A condition to be evaluated, followed by a question mark (?) 
+The expression to execute if the condition evaluates to true, following a colon (:) 
+The expression to execute if the condition evaluates to false */
+
+// The ternary operator is frequently used to conditionally set a value
+const resultOne = true ? "First value." : "Second value.";
+const resultTwo = false ? "First value." : "Second value.";
+
+console.log(resultOne);
+console.log(resultTwo);
+
+/* Use the switch statement to compare the value of an expression to a list of potential values defined using one or 
+more case keywords */
+
+// The switch case will execute a command only if the case follows the switch statement
+switch (21 + 34 === 55) {
+    case false:
+        console.log("21 + 34 != 55");
+    case true:
+        console.log("21 + 34 == 55");
+}
+
+switch (11 + 14 === 25) {
+    case false:
+        console.log("11 + 14 != 25");
+    case true:
+        var thisString = "11 + 14 == 25";
+        console.log(thisString);
+}
+
+/* The problem with the switch... case statement is that after a match is found, Javascript interpreter executes any
+statement that follow the matched case, including the other case statements. It's called "falling through" to the next case */
+switch (1 + 12 === 42) {
+    case false:
+        console.log("1 + 12 != 42");
+    case true:
+        console.log("1 + 12 == 42");
+}
+
+// End each case statement will a break keyword to avoid falling through to the next case
+// The break statement helps to stop the switch body evaluation from immediately going to the next case
+switch (71 + 34 === 122) {
+    case false:
+        console.log("71 + 34 != 122");
+        break;
+
+    case true:
+        console.log("71 + 34 == 122");
+        break;
+}
+
+// If no case statement matches the conditional value, then the switch will select the default statement and execute it
+switch (13) {
+    default:
+        console.log("This value is unexpected!");
+        break;
+    case 7:
+        console.log("This value is 7!");
+        break;
+    case 14:
+        console.log("This value is 14!");
+        break;
+    case 20:
+        console.log("This value is 20!");
+        break;
+}
+
+/* Because case statements don't require a block statement for grouping multiple statements, case and default statements
+don't create lexical scopes by themselves */
+
+// To manage lexical scopes, create a block statement like so
+let thisBe;
+switch (true) {
+    case true:
+        {
+            let thisBe = "true";
+            console.log("thisBe: " + thisBe);
+            break;
+        }
+
+    default:
+        {
+            let thisBe = "false";
+            console.log("thisBe: " + thisBe);
+            break;
+        }
+}
+
 // Found out about the set timeout function at: https://stackoverflow.com/questions/18503001/node-js-console-gets-closed-immediately-after-i-execute-the-program-from-visual
 setTimeout(function () {
     process.exit();
