@@ -475,6 +475,100 @@ var hoistedVariable;
 unhoistedVariable = true;
 console.log("unhoistedVariable = " + unhoistedVariable);
 
+// Strict equality operator to compare 2 operands: the expression 1+4 and the value 5
+// Because the expression and number value are the same, the expression will evaluate to true
+console.log("1 + 4 === 5: " + (1 + 4 === 5));
+
+// == loose equality and === strict equality
+console.log("3 == 3: " + (3 == 3));
+console.log("3 == '3': " + (3 == "3"));
+
+// The same is true of !=, which returns true if the operands being compared aren't loosely equal
+console.log("1 != 4: " + (1 != 4));
+console.log("12 != '12': " + (12 != "12"));
+
+// All values in Javascript are implicitly true or false, and can be coerced to the corresponding boolean value
+// A limited set of values coerce to false include 0, null, undefined, NaN and an empty string ("")
+console.log("'Osama' == true: " + ("Osama" == true));
+console.log("100 == true: " + (100 == true));
+console.log("0 == true: " + (0 == true));
+
+// Logical operators include & (AND), | (OR), and ! (NOT)
+console.log("3 === 1 || 4 === 4: " + (3 === 1 || 4 === 4)); // Returns true because one of conditional statements is true
+console.log("4 === 4 || 4 === '4': " + (4 === 4 && 4 === "4")); // Returns false because there is a numbered string data here
+console.log("1 == 1 && !'Osama': " + (1 == 1 && !"Osama")); // Returns false because there is a string printed here
+
+console.log("true: " + true); // Returns true because there is a true boolean here without the !
+console.log("!true: " + !true); // Returns false because the ! means NOT and we're saying it's not true
+console.log("!false: " + !false); // Returns true because the ! means NOT and we're saying it's not false
+
+// Using a logical ! (NOT) operator in front of a data type will coerce that value to a boolean and reverse the boolean
+console.log("Osama");
+console.log("!Osama: " + !"Osama");
+console.log(0);
+console.log("!0: " + !0); // This will reverse the boolean value to true because 0 equals to false and we have a ! operator
+
+// The & (AND) logical operator returns true if two or more conditional statements all return true
+// But will return false if one of the logical AND conditions returns false (e.g. 4 === 5 && "Me" returns false)
+console.log("true && false: " + (true && false));
+console.log("false && true: " + (false && true));
+console.log("false && false: " + (false && false));
+console.log("true && true: " + (true && true));
+
+// If the & (AND) operator is used with 2 non-boolean operators, the first operand will return unchanged if it is coerced to false
+// If the first operand is coerced to true, then the second operand will return unchanged
+console.log("false && 'SpongeBob': " + (false && "SpongeBob"));
+console.log("null && 'SpongeBob': " + (null && "SpongeBob"));
+console.log("'SpongeBob' && false: " + ("SpongeBob" && false));
+console.log("'SpongeBob' && 'Patrick': " + ("SpongeBob" && "Patrick"));
+console.log("30 === 30 && 'SpongeBob': " + (30 === 30 && "SpongeBob"));
+
+// The | (OR) logical operator returns true only one of the 2 operands only if that operand is equal to true
+console.log("false || true: " + (false || true));
+console.log("true || false: " + (true || false));
+console.log("true || true: " + (true || true));
+console.log("false || false: " + (false || false));
+
+// If the | (OR) operator is used with 2 non-boolean operators, the first operand will return unchanged if it is coerced to true
+// If the first operand is coerced to false, then the second operand will return unchanged
+console.log("false || 'Squidward': " + (false || "Squidward"));
+console.log("null || 'Squidward': " + (null || "Squidward"));
+console.log("'Squidward' || false: " + ("Squidward" || false));
+console.log("'Squidward' || 'Mr. Krabs': " + ("Squidward" || "Mr. Krabs"));
+console.log("11 === 11 || 'Krusty Krab': " + (11 === 11 || "Krusty Krab"));
+
+// The nullish coalescing operator ?? returns the first operand only if that operand has any value other than null or undefined
+// Otherwise, the ?? returns the second operand
+console.log("null ?? 'Dwayne 'The Rock' Johnson': " + (null ?? "Dwayne 'The Rock' Johnson"));
+console.log("undefined ?? 'Dwayne 'The Rock' Johnson': " + (undefined ?? "Dwayne 'The Rock' Johnson"));
+console.log("true ?? 'Dwayne 'The Rock' Johnson': " + (true ?? "Dwayne 'The Rock' Johnson"));
+console.log("0 ?? 'Dwayne 'The Rock' Johnson': " + (0 ?? "Dwayne 'The Rock' Johnson"));
+console.log("false ?? 'Dwayne 'The Rock' Johnson': " + (false ?? "Dwayne 'The Rock' Johnson"));
+
+// Use the assignment operators to assign the value of the second operand to a first operand (e.g. =)
+// Use logical assignment operators to conditionally assign a value to a variable based on true or false value of that variable
+// The logical AND assignment (&&=) operator evaluates the second operand and assigns it to the first operand
+// But only if the first operand is evaluated to true (or if the first operand is true, assign it the value of the second operand instead)
+let thisAssignmentLogic = false;
+console.log("thisAssignmentLogic &&= 3 + 3: " + (thisAssignmentLogic &&= 3 + 3));
+
+thisAssignmentLogic = true;
+console.log("thisAssignmentLogic &&= 3 + 3: " + (thisAssignmentLogic &&= 3 + 3));
+
+// If the &&= assignment operator has a comparsion operator, then it will return true or false
+// Meaning that the value cannot be assigned and will return an error (SyntaxError: Invalid left-hand side in assignment)
+
+/*let thisComparsionLogic = 4;
+thisComparsionLogic < 19 &&= "I am a comparsion logic!";*/
+
+// The logical OR (||=) assignment operator evaluates the second operand and assigns it to the first operand
+// But only if the first operand is evaluated to false (or if the first operand is false, assign it the value of the second operand instead)
+let thisAssignmentLogic2 = false;
+console.log("thisAssignmentLogic2 ||= 5 + 4: " + (thisAssignmentLogic2 ||= 5 + 4));
+
+thisAssignmentLogic2 = true;
+console.log("thisAssignmentLogic2 ||= 5 + 4: " + (thisAssignmentLogic2 ||= 5 + 4));
+
 // Found out about the set timeout function at: https://stackoverflow.com/questions/18503001/node-js-console-gets-closed-immediately-after-i-execute-the-program-from-visual
 setTimeout(function () {
     process.exit();
