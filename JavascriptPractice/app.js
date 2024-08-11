@@ -693,6 +693,502 @@ switch (true) {
         }
 }
 
+// Loops let you repeat a set of statements for as long as a condition is met or until a condition is met
+
+/* Use loops to execute a set of instructions a fixed number of times, until a specific result is achieved, or until
+the interpreter reaches the end of an iterable data structure (e.g. final element in an array, map, list, etc.) */
+
+// Set the number variable and tell the console that we're beginning to loop through the number
+let thisLoopedNumberBe = 0;
+console.log("Before the loop begins...");
+
+// Loop through my number only if it's less than 10
+while (thisLoopedNumberBe < 10) {
+
+    // Increment the number by a half
+    thisLoopedNumberBe += 0.5;
+    console.log("Looping through number: " + thisLoopedNumberBe); // Print the numbers in the loop
+}
+
+// After the loop is over, write this to the console
+console.log("This loop ended!");
+
+// If the loop condition isn't met during the loop's execution of the code, the loop will go on indefinitely
+
+/* These infinite loops are a programming pitfall (risk) that can cause the main execution thread to pause indefinitely
+or even crash a browser tab/the program (it's best to avoid infinite loops altogether) */
+
+// This will execute the loop as long as the boolean value true remains true
+// Since the boolean values are immutable (can't be changed), it will create an infinite loop
+
+/*while (true) {
+    // Increment the number by a half
+    let thisNumber;
+    thisNumber += 0.5;
+
+    console.log("Looping through number: " + thisNumber); // Print the numbers in the loop
+}*/
+
+// A while loop is created using the while keyword followed by a pair of matched parentheses containing a condition to be evaluated
+// If the specified condition initially evaluates to true, the statement that follows those parentheses will be executed
+// If not, the loop never runs
+// After each iteration, the condition is reevaluated, and it's still true, the loop repeats
+let iterationLoop = 0;
+while (iterationLoop < 4) {
+    console.log(`Loop ${iterationLoop}`);
+    iterationLoop++;
+}
+
+/* If the interpreter finds a continue statement in a while loop, it stops that iteration (repetition of a process),
+reevaluates the condition, and continues the loop if possible */
+
+let iterationLoop2 = -2;
+console.log("Loop starting now...");
+
+while (iterationLoop2 < 3) {
+    console.log(`Loop ${iterationLoop2}`);
+    iterationLoop2++;
+
+    if (iterationLoop2 == 1) {
+        console.log("This number looped through: " + iterationLoop2);
+        continue;
+    }
+}
+
+console.log("Loop ended!");
+
+/* If the interpreter finds a break statement in a while loop, it stops that iteration (repetition of a process) and
+won't reevaluate the condition, letting the iterpreter move on */
+
+let iterationLoop3 = 1;
+console.log("Loop starting now...");
+
+while (iterationLoop3 <= 6) {
+
+    if (iterationLoop3 === 4) {
+        console.log("This number ended the loop at: " + iterationLoop3);
+        break; // End the loop
+    }
+
+    console.log(`Loop ${iterationLoop3}`);
+    iterationLoop3++;
+}
+
+console.log("Loop ended!");
+
+/* You can use while to iterate a specified number of times, but the most common use case for while is a loop of 
+indeterminate length */
+
+let randomizedValue = () => Math.floor(Math.random() * 10);
+let randomizedNumber = randomizedValue();
+
+while (randomizedNumber !== 5) {
+    console.log(`This number is not equal to 5 because this number is equal to ${randomizedNumber}`);
+    randomizedNumber = randomizedValue();
+}
+
+console.log(`This number is equal to ${randomizedNumber}`);
+
+/* Do... while is a variant of the while loop in which the conditional evaluation happens at the end of each iteration
+of the loop, meaning that the body of the loop is always executed at least once */
+let iterationCount = 1;
+do
+{
+    console.log(`Loop ${iterationCount}`);
+    iterationCount++;
+} while (iterationCount < 4) // When this condition here is not true, the loop will end
+
+// Just like while loops, the most common use case for do... while loop is a loop of indeterminate (indefinite) length
+let thisRandomNumber;
+do {
+    thisRandomNumber = (() => Math.floor(Math.random() * 10))();
+    console.log(`Number ${thisRandomNumber} is not equal to 4`);
+} while (thisRandomNumber != 4);
+
+console.log(`Number ${thisRandomNumber} is equal to 4`);
+
+/* Use for loops to iterate over a known quantity. In legacy codebases, for loops are frequently used to iterate over
+the elements in an array */
+
+/* For loops are followed by a set of parentheses that accepts the following three expressions in order and seperated
+by semicolons:
+
+1. An expression to be evaluated when the for loop begins 
+2. A condition that should determine when the loop should continue (until the condition is met)
+3. An expression to be executed at the conclusion of each loop */
+for (let num = 0; num < 4; num++) {
+    console.log(`Print this number: ${num}`);
+}
+
+var myArray = ["Osama1", "Osama2", "Osama3"];
+for (let i = 0; i < myArray.length; i++)
+{
+    console.log(`Print myArray: ${myArray[i]}`);
+}
+
+// A for... of loop iterates over the values stored in an iterable data structure (e.g. set, map, array)
+
+/* A for... of loop uses the for keyword followed by a set of parentheses containing a variable, followed by a of, 
+then the data structure being iterated over */
+let osamaForOfLoop = ["Osama for of loop 1", "Osama for of loop 2", "Osama for of loop 3"];
+
+// Variables declared with let or const are scoped to the block statement within the loop
+for (let thisLoop of osamaForOfLoop)
+{
+    console.log(thisLoop);
+}
+
+// Use for... in loops to iterate over the enumerable properties of an object, including enumerable inherited properties
+
+/* A for... in loop uses the for keyword followed by a set of parentheses containing a variable that contains 
+the value of the property key corresponding with the current iteration of the loop */
+
+var osamaForInLoop = {
+    "Osama for in loop 1" : true, "Osama for in loop 2" : false, "Osama for in loop 3" : false
+};
+
+// Variables declared with let or const are scoped to the block statement within the loop
+for (var thisKey in osamaForInLoop) {
+
+    // The value associated with each property key isn't directly available to the for... in syntax.
+    // However, because the loop has access to the property key in each iteration, you can use that key to look up its value
+    console.log(`${thisKey} : ${osamaForInLoop[thisKey]}`);
+}
+
+/* Properties inherited from built-in constructors are non-enumerable, meaning that for... in loops don't iterate
+through properties inherited from the Object constructor. However, any enumerable properties within the object's 
+prototype's chain are included */
+const thePrototype = { "prototypeProperty": true };
+const theObject = Object.create(thePrototype, {
+    thisProperty: {
+        value: true, enumerable: true
+    }
+});
+
+for (const theKey in theObject) {
+    console.log(`${theKey} : ${theObject[theKey]}`);
+}
+
+/* Javascript provides built-in methods for determining whether a property is a direct property of the object 
+rather than a property on the object's prototype chain: the modern Object.hasOwn() and legacy 
+Object.prototype.hasOwnProperty() methods. These methods evaluate whether a specified property is inherited (or 
+undeclared), returning true only for the immediate properties of a specified object */
+
+const thePrototype2 = { "prototypeProperty2": true };
+const theObject2 = Object.create(thePrototype2, {
+    thisProperty2: {
+        value: true, enumerable: true
+    }
+});
+
+for (const theKey2 in theObject2) {
+    if (Object.hasOwn(theObject2, theKey2)) {
+        console.log(`${theKey2} : ${theObject2[theKey2]}`);
+    }
+}
+
+/* There are also 3 static methods that each return an Array made up of an Object's enumerable keys( Object.keys() ), 
+values( Object.values() ), or key-value pairs( Object.entries() ) */
+const theObjectKeys = { "thisProperty1": true, "thisProperty2": false };
+console.log(Object.keys(theObjectKeys));
+
+// Iterate the Object keys, values, or key-value pairs over without including properties owned by that Object's prototype
+const thePrototype3 = { "prototypeProperty3": "Non-enumerable property value." };
+const theObject3 = Object.create(thePrototype3, {
+    thisProperty3: {
+        value: "Enumerable property value.",
+        enumerable: true
+    }
+});
+
+for (const theKey3 of Object.keys(theObject3)) {
+    console.log(theKey3);
+}
+
+for (const theValue3 of Object.values(theObject3)) {
+    console.log(theValue3);
+}
+
+for (const [theKey3, theValue3] of Object.entries(theObject3)) {
+    console.log(`${theKey3} : ${theValue3}`);
+}
+
+/* The forEach() methods provided by the Array, Map, Set, and NodeList constructors provide a useful shorthand for 
+iterating over a data structure in the context of a callback function. Unlike other forms of loop, a loop created with 
+any forEach() method can't be interrupted using break or continue. */
+
+/* The callback function used with Array.forEach provides parameters containing the value of the current element, 
+the index of the current element, and the array the forEach method was invoked in */
+const osamaArray = ["Osama, ", "time", " for", " the", " hammer!"];
+
+osamaArray.forEach((myElement, i, originalArray) => {
+    console.log(i, myElement, originalArray);
+});
+
+/* The callback function used with Map.forEach provides parameters containing the value associated with the current
+element, the key associated with the current element, and the Map the forEach method was invoked in */
+const osamaMap = new Map([["Osama, ", "go!"], ["Sama, ", "move!"],]);
+
+osamaMap.forEach((thisValue, thisKey, originalMap) => {
+    console.log(thisValue, thisKey, originalMap);
+});
+
+/* A Set.forEach callback includes similar parameters. Because Set doesn't have indexes or keys distinct from values, 
+the second argument instead provides a redundant, ignorable value, strictly to keep the syntax consistent with the 
+other forEach methods. */
+const osamaSet = new Set(["Osama", "set", "the", "project"]);
+
+osamaSet.forEach((thisValue, thisKey, originalSet) => {
+    console.log(thisValue, thisKey, originalSet);
+});
+
+/* An iterable is any data structure made up of individual elements that can be iterated over using the approaches
+detailed previously. An iterator is an iterable object that follows iterator protocol, which means it must implement
+a next() method that advances through the elements it contains one at a time, each time that method is called, returning
+an object for each sequential element in a specific format. */
+const osamaIterable = [1, 2, 3];
+const osamaIterator = osamaIterable[Symbol.iterator]();
+
+console.log(osamaIterable);
+console.log(osamaIterator);
+
+/* Calling the next() method on an iterator steps through the elements it contains one at a time, with each call 
+returning an object containing two properties: value, which contains the value of the current element, and done, 
+a boolean that tells us if the iterator has passed the last element of the data structure. The value of done is true
+only when a call to next() results in an attempt to access an element beyond the last element in the iterator. */
+console.log(osamaIterator.next());
+console.log(osamaIterator.next());
+console.log(osamaIterator.next());
+console.log(osamaIterator.next());
+
+// Use the function* keyword to declare a generator function or define a generator function expression
+function* osamaGeneratorFunction()
+{
+    /* Like iterators, generator functions maintain state. Calling a generator function returns a new Generator object 
+    but doesn't immediately execute the code in the body of a function */
+    console.log("Generate Osama's function body.");
+}
+
+const osamaGeneratorObject = osamaGeneratorFunction();
+console.log(osamaGeneratorObject);
+console.log(typeof (osamaGeneratorObject));
+
+/* Generator objects follow iterator protocol. The value each call to next() on a generator function returns is 
+determined by a yield expression, which pauses execution of the generator function and returns the value of the expression
+that contains the yield keyword. Later calls to next() continue execution of the function, pausing at the next yield 
+expression and returning the associated value. */
+function* osamaYieldGeneratorFunction()
+{
+    // Use yield keyword in a generator function to generate a value
+    yield "Osama Hussein is learning Javascript!";
+
+    /* Use return to end a statement inside the generator's function to ensure the done boolean will be true
+    and won't need to create a new Generator object every time */
+    return "Osama Hussein will not give up the programming life until he knows he can succeed!";
+}
+
+const osamaYieldGeneratorObject = osamaYieldGeneratorFunction();
+console.log(osamaYieldGeneratorObject.next());
+console.log(osamaYieldGeneratorObject.next());
+
+/* When next() is called after no further values are specified using yield, return, or throw (in the event of an error), 
+the remainder of the function body executes, and the returned Object has a value of undefined and a done property of true */
+//console.log(osamaYieldGeneratorObject.next()); // Like my example here
+
+/* Use next() only on the Object the generator function returns, not the generator function itself. Otherwise, each 
+call to the generator function creates a new Generator object. */
+
+/* As with any function, the generator function halts when it encounters a return keyword. It then returns an Object 
+to the invoking context that contains the returned value and a done property with the value true. */
+
+/* A yield expression can take on some of the semantics of an identifier, allowing two-way "communication" from and 
+back to the suspended portion of the generator function. When a value is passed to a generator's next() method 
+as an argument, it replaces the value associated with the previous, suspended yield expression. */
+function* generatorFunction2() {
+    const firstYield = yield;
+    yield firstYield + 10;
+};
+
+const generatorObject2 = generatorFunction2();
+console.log(generatorObject2.next());
+console.log(generatorObject2.next(8));
+
+/* Bear in mind that this replaces the entire expression associated with the previous yield, and doesn't just reassign 
+the value of the previous yield to the value specified in next() */
+function* generatorFunction3()
+{
+    const firstYield = yield;
+    const secondYield = yield firstYield + 100;
+    yield secondYield + 10;
+};
+
+const generatorObject3 = generatorFunction3();
+console.log(generatorObject3.next());
+console.log(generatorObject3.next(11));
+console.log(generatorObject3.next(22));
+
+/* Any argument passed to the first call to next() is ignored, because there's no previous yield expression to accept 
+that value. As with any other function, arguments passed to the initial generator function call are available throughout 
+the scope of the generator function's body. */
+function* generatorFunction4(value_) {
+    let newValue = yield value_ + 1;
+    newValue = yield newValue + 10;
+    yield value_ + 20;
+};
+
+const generatorObject4 = generatorFunction4(2);
+console.log(generatorObject4.next(1));
+console.log(generatorObject4.next(5));
+console.log(generatorObject4.next(10));
+
+/* The yield* operator is used with an iterable, such as another generator function, to iterate over and yield each 
+value its operand returns. */
+function* secondaryGenerator() {
+    yield 4;
+    yield 6;
+}
+
+function* generatorFunction5() {
+    yield 2;
+    yield* secondaryGenerator();
+    yield 6;
+    return 7;
+}
+
+const generatorIterator = generatorFunction5();
+console.log(generatorIterator.next());
+console.log(generatorIterator.next());
+console.log(generatorIterator.next());
+console.log(generatorIterator.next());
+console.log(generatorIterator.next());
+
+/* A Promise is a placeholder for a value that isn't known when the promise is created. It's a container that dictates 
+an asynchronous operation, the terms by which the operation is considered a success or failure, the actions to be taken 
+in either case, and the value that results. */
+
+/* The Promise constructor function accepts a function called the executor as an argument. That executor function is 
+typically used to perform one or more asynchronous actions, then dictate the terms by which the Promise should be 
+considered successfully fulfilled or rejected. A Promise is defined as pending while the executor function is running. 
+After the executor finishes, a Promise is considered fulfilled (or resolved, in other documentations) if the executor 
+function and asynchronous action it performs are completely successfully, and rejected if the executor function 
+encounters an error, or the asynchronous action being performed fails. After a Promise if fulfilled or rejected, it's
+considered settled. */
+
+/* The constructor calls the executor function with two arguments. Those arguments are functions that let you 
+manually fulfill or reject the Promise */
+
+/* The functions used to fulfill or reject a Promise are called with the resulting value of the Promise as an 
+argument (typically an error for rejection) */
+const osamaPromise = new Promise((fulfill, reject) => {
+    const osamaResult = true;
+
+    if (osamaResult === true) {
+        fulfill("This promise was fulfilled!");
+    } else {
+        reject(new Error("This promise was rejected!"));
+    }
+});
+
+console.log(osamaPromise);
+
+/* The resulting Promise object can be acted on using the then(), catch(), and finally() methods inherited from the 
+Promise constructor. Each of these methods returns a Promise, which can immediately be acted on with then(), catch(), 
+or finally() again, letting you chain the resulting Promises. */
+
+/* then() provides two callback functions as arguments. Use the first to fulfill the resulting Promise, and the second 
+to reject it. Both methods accept a single argument that gives the resulting Promise its value. */
+osamaPromise.then(successfulResult => console.log(successfulResult), failedResult => console.log(failedResult));
+
+/* You can also use then() to handle only the fulfilled state, and catch to handle the rejected state. Call catch with 
+a single argument containing the value provided in the Promise's rejection method. */
+osamaPromise
+    .then(successfulResult => console.log(successfulResult))
+    .catch(failedResult => console.log(failedResult))
+    .finally(() => console.log("The promise has been settled!"));
+
+/* Unlike then and catch, which allow a handler function to run when a Promise is fulfilled or rejected, a function 
+passed as an argument to the finally method is called regardless of whether the Promise was fulfilled or rejected. 
+The handler function is called with no arguments, because it's not intended to work with the values passed from the 
+Promise, only to execute code after the Promise is complete. */
+
+/* The Promise constructor provides 4 methods for working with multiple related Promises, using an iterable containing 
+Promise objects. These methods each return a Promise, which is fulfilled or rejected based on the state of the Promises 
+passed to it. Promise.all(), for example, creates a Promise that is fulfilled only if every Promise passed to that 
+method is fulfilled. */
+const promise1 = new Promise((fulfill, reject) => fulfill("Successful!"));
+const promise2 = new Promise((fulfill, reject) => fulfill("Successful!"));
+const promise3 = new Promise((fulfill, reject) => fulfill("Successful!"));
+const failedPromise = new Promise((fulfill, reject) => reject("Failed!"));
+const successfulPromises = [promise1, promise2, promise3];
+const oneFailedPromise = [failedPromise, ...successfulPromises];
+
+Promise.all(successfulPromises)
+    .then((allValues) => {
+        console.log(allValues);
+    })
+
+    .catch((failValue) => {
+        console.log(failValue);
+    });
+
+Promise.all(oneFailedPromise)
+    .then((allValues) => {
+        console.log(allValues);
+    })
+
+    .catch((failValue) => {
+        console.log(failValue);
+    });
+
+/* The Promise concurrency methods are as follows: 
+
+Promise.all() - fulfilled only if all supplied Promises are fulfilled
+
+Promise.any() - fulfilled if any one of the supplied Promises are fulfilled, and rejected only if all Promises are 
+rejected 
+
+Promise.allSettled() - fulfilled when Promises have settled, regardless of their result 
+
+Promise.race() - rejected or fulfilled based on the result of the first Promise to settle, ignoring all Promises settled 
+later 
+*/
+
+/* When you use the async keyword before a function declaration or function expression, any value that function returns 
+is returned as a fulfilled Promise containing that value. This lets you run and manage asynchronous operations using 
+the same workflows as synchronous development. */
+async function osamaAsyncFunction()
+{
+    return "This is Osama's async function.";
+}
+
+osamaAsyncFunction().then(thisReturnedValue => console.log(thisReturnedValue));
+
+/* The await expression pauses the execution of an asynchronous function while the associated Promise is settled. After 
+the Promise is settled, the value of the await expression is the fulfilled or rejected value of the Promise. */
+async function osamaAsyncFunction2()
+{
+    const osamaPromise = new Promise((fulfill, reject) => fulfill("Osama's async function 2 was successful!"));
+    const osamaPromisedResult = await osamaPromise;
+    return osamaPromisedResult;
+}
+
+osamaAsyncFunction2()
+    .then(thisResult => console.log(thisResult))
+    .catch(thisFailedResult => console.log(thisFailedResult));
+
+// Any non-Promise value included in an await expression is returned as a fulfilled Promise
+async function osamaAsyncFunction3()
+{
+    const osamaPromisedResult = await "Osama's promise value!";
+    return osamaPromisedResult;
+}
+
+osamaAsyncFunction3()
+    .then(thisResult => console.log(thisResult))
+    .catch(thisFailedResult => console.log(thisFailedResult));
+
+
+
 // Found out about the set timeout function at: https://stackoverflow.com/questions/18503001/node-js-console-gets-closed-immediately-after-i-execute-the-program-from-visual
 setTimeout(function () {
     process.exit();
